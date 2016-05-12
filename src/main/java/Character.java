@@ -14,29 +14,24 @@ public class Character {
     
     private MainApplet parent;
     private int state;
-    //declare varibles
-    
+    // declare varibles
     // original position
     private float originX , originY , diameter = 30 ;
     // current position
     private float x , y ;
     // position in circle
     private float circleX , circleY ;
-    // color
+    // color using r, g, b
     private int r , g , b  ;
     
     private String name ;
     private int showName ;
     private int showLink;
-    
-    // save the data of the intensity of line between target and source
     private HashMap<Character,Integer> targets;
     
     
     
-    
-    
-    
+
     public Character(MainApplet parent, String name, float x, float y , int r , int g , int b ){
         this.parent = parent;
         this.name = name ;
@@ -54,6 +49,7 @@ public class Character {
     }
     
     public void display(){
+    	// state : 1. dragged  2.inCircle  3.inOrigin  4.Do nothing until Animation Done
         if( state == 1 ) drag() ;
         else if( state == 2 ) inCircle() ;
         else if( state == 3 ) inOrigin() ;
@@ -63,7 +59,7 @@ public class Character {
         parent.strokeWeight(1);
         
         if(showName == 1){
-            // Bigger ellipse
+            // Draw the Bigger ellipse
             parent.fill(r, g, b, 80);
             parent.ellipse(x, y, 50, 50);
             
@@ -86,6 +82,7 @@ public class Character {
         
     }
     
+    //method
     public void setCX(float f){
         circleX = f;
     }
